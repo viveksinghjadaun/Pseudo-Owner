@@ -14,7 +14,7 @@ const fetchUserBookingsStart = () => ({
   export const fetchUserBookings = (userId) => async (dispatch) => {
     dispatch(fetchUserBookingsStart());
     try {
-      const res = await fetch(`/api/booking/${userId}/bookings`);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/booking/${userId}/bookings`);
       const data = await res.json();
       if (data.success === false) {
         dispatch(fetchUserBookingsFailure());

@@ -50,7 +50,7 @@ export default function Search() {
     const fetchListings = async () => {
       setLoading(true);
       const searchQuery = urlParams.toString();
-      const res = await fetch(`/api/listing/get?${searchQuery}`);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/listing/get?${searchQuery}`);
       const data = await res.json();
       setListings(data);
       setLoading(false);
