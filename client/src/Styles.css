@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300&display=swap");
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Be Vietnam Pro", sans-serif;
+    scroll-behavior: smooth;
+}
+.hero-section{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:3rem;
+    margin: 2rem 1rem;
+    padding: 0 1rem;
+  
+}
+.hero-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+.hero-heading{
+    font-size: 35px;
+    color: #343d68;
+    font-weight: 500;
+}
+.role,.Sri,.vivek{
+    color: #4e45d5;
+    font-weight: 800;
+}
+.hero-subheading{
+    font-size: 45px;
+    line-height: 45px;
+}
+.hero-description{
+    margin-top: 1rem;
+    width: 70%;
+    font-weight: 500;
+}
+
+  .hero-right{
+    position: relative;
+  }
+  .absolute{
+    position: absolute;
+  }
+
+.user-image{
+    padding: 2.5rem;
+    filter:grayscale(1);
+    transition: all 1s;
+    animation: scaleup 5s linear infinite;
+}
+.user-image img{
+    z-index:-9;
+  }
+
+  @keyframes scaleup {
+
+    0%{
+        filter:grayscale(0);
+        transform:scale(1);
+        
+    }
+
+    50%{
+        transform:scale(1.1);
+        filter:grayscale(1);
+        box-shadow: 3px 3px 10px black;
+    }
+
+    100%{
+        transform:scale(1);
+        filter:grayscale(0);
+    }
+    
+  }
