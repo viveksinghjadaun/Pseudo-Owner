@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGO)
 
 const app = express();
 const allowedOrigins = [
-    'http://localhost:5173',
+    'https://pseudo-owner.vercel.app',
 ];
 app.use(crossOrigin({
     origin: (origin, callback) => {

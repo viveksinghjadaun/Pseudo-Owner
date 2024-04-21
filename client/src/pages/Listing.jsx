@@ -61,7 +61,7 @@ export default function Listing() {
       const booking = bookingData.booking;
       const razorpayOrder = bookingData.razorpayOrder;
 
-      const API_URL = "http://localhost:3000";
+      const API_URL = "https://pseudo-owner.onrender.com";
       const RAZORPAY_KEY_ID = import.meta.env.VITE_RAZORPAY_API_KEY;
       console.log(razorpayOrder);
       const razorpayOptions = {
