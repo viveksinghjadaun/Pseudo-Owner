@@ -24,18 +24,27 @@ mongoose.connect(process.env.MONGO)
 const app = express();
 const allowedOrigins = [
     'https://pseudo-owner.vercel.app',
+    'https://pseudo-owner.onrender.com',
+    'http://localhost:5173',
 ];
-app.use(crossOrigin({
-    origin: (origin, callback) => {
-        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS origin'));
-        }
-    },
+// app.use(crossOrigin({
+//     origin: (origin, callback) => {
+//         if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+//             callback(null, true);
+//         } else {
+//             console.log("cors error");
+//             callback(new Error('Not allowed by CORS origin'));
+//         }
+//     },
+//     credentials: true,
+//     optionsSuccessStatus: 200
+// }));
+app.use(cors({
+    origin: allowedOrigins,
     credentials: true,
     optionsSuccessStatus: 200
-}));
+}))
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
