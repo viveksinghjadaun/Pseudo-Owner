@@ -1,8 +1,9 @@
+import lottie from 'lottie-web';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import ListingItem from '../components/ListingItem';
-import lottie from 'lottie-web';
 import animationData from '../assets/a1.json';
+import ListingItem from '../components/ListingItem';
+// import { _fetchOfferListings } from '../http';
 
 export default function Home() {
   const [offerListings, setOfferListings] = useState([]);
@@ -10,8 +11,18 @@ export default function Home() {
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/listing/get?offer=true&limit=4`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/listing/get?offer=true&limit=4`, {
+          method: 'GET',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          }
+        });
+
+        console.log(res);
         const data = await res.json();
+        // const { data } = await _fetchOfferListings();
         setOfferListings(data);
       } catch (error) {
         console.log(error);
@@ -19,13 +30,14 @@ export default function Home() {
     };
 
     fetchOfferListings();
+
   }, []);
 
   useEffect(() => {
     const container = document.getElementById('your-animation-container');
     lottie.loadAnimation({
       container: container,
-      renderer: 'svg', 
+      renderer: 'svg',
       loop: true,
       autoplay: true,
       animationData: animationData,
@@ -52,10 +64,10 @@ export default function Home() {
         >
           Let's get started...
         </Link>
-       
+
       </div>
       <div id="your-animation-container" className=""></div>
-     
+
 
 
       {/* listing results for offer */}
