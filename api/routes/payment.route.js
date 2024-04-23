@@ -5,8 +5,8 @@ import { verifyToken } from '../utils/verifyUser.js';
 const router = express.Router();
 
 
-// router.route('/confirm-payment').post(confirmPayment);
-router.route('/confirm-payment').post(verifyToken, confirmPayment);
+router.route('/confirm-payment').post(confirmPayment);
+// router.route('/confirm-payment').post(verifyToken, confirmPayment);
 
 
 

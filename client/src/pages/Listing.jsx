@@ -142,8 +142,6 @@ export default function Listing() {
         setListing(data);
         setLoading(false);
         setError(false);
-        console.log(data);
-        console.log(listing);
       } catch (error) {
         setError(true);
         setLoading(false);
