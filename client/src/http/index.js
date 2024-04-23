@@ -3,7 +3,7 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 const api = axios.create({
     baseURL: "https://pseudo-owner.onrender.com",
-    withCredentials: true,
+    // withCredentials: true,
     headers: {
         'Content-type': 'application/json',
         Accept: 'application/json',
