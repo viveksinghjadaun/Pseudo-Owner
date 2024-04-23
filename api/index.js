@@ -12,7 +12,6 @@ import userRouter from './routes/user.route.js';
 // import { default as paymentRouter, default as userRouter } from './routes/payment.route.js';
 
 dotenv.config();
-
 mongoose.connect(process.env.MONGO)
     .then(() => {
         console.log('connected to mongodb');
@@ -22,6 +21,8 @@ mongoose.connect(process.env.MONGO)
     })
 
 const app = express();
+
+
 const allowedOrigins = [
     'https://pseudo-owner.vercel.app',
     'https://pseudo-owner.onrender.com',
@@ -39,11 +40,30 @@ const allowedOrigins = [
 //     credentials: true,
 //     optionsSuccessStatus: 200
 // }));
+
+
+
+// app.use(cors({
+//     origin: allowedOrigins,
+//     credentials: true,
+//     optionsSuccessStatus: 200
+// }));
+
+let refreshTokenDomain = '';
 app.use(cors({
-    origin: allowedOrigins,
+    origin: (origin, callback) => {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+            let indexUrl = allowedOrigins.indexOf(origin);
+            refreshTokenDomain = allowedOrigins[indexUrl];
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS origin'));
+        }
+    },
     credentials: true,
     optionsSuccessStatus: 200
-}))
+}));
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -77,3 +97,4 @@ app.use((err, req, res, next) => {
         message,
     });
 });
+
