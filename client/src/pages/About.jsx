@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Typed from 'typed.js';
-import '../Styles.css'
+import '../Styles.css';
 
 export default function About() {
   useEffect(() => {
@@ -20,14 +20,14 @@ export default function About() {
     const typedata = new Typed(".vivek", {
       strings: [
         "Full Stack Developer",
-      
+
       ],
       loop: true,
       typeSpeed: 100,
       backSpeed: 80,
       backDelay: 1000,
     });
-   
+
     const typeSri = new Typed(".Sri", {
       strings: [
         "Ui-Ux Designer",
@@ -46,30 +46,30 @@ export default function About() {
   }, []);
   return (
     <div className="flex flex-col">
-       <div className="text-slate-600 font-bold text-3xl lg:text-6xl mx-auto my-7">
+      <div className="text-slate-600 font-bold text-3xl lg:text-6xl mx-auto my-7">
         Why PseudoOwner ...
       </div>
-     <div>
-    
-     <div className="hero-section">
-        <div className="hero-left">
-          <div className="hero-heading">Free Cancelation</div>
-          <div className="hero-description">
-          If you are not satisfied with our product, you can cancel your rental anytime, and we'll issue a refund.
+      <div>
+
+        <div className="hero-section">
+          <div className="hero-left">
+            <div className="hero-heading">Free Cancelation</div>
+            <div className="hero-description">
+              If you are not satisfied with our product, you can cancel your rental anytime, and we'll issue a refund.
+            </div>
           </div>
         </div>
-      </div>
-     
-      <div className="hero-section">
-        <div className="hero-left">
-          <div className="hero-heading">24 Hour Support</div>
-          <div className="hero-description">
-          Our dedicated support team is available 24/7 to assist you with any queries or issues you may have.
-           </div>
+
+        <div className="hero-section">
+          <div className="hero-left">
+            <div className="hero-heading">24 Hour Support</div>
+            <div className="hero-description">
+              Our dedicated support team is available 24/7 to assist you with any queries or issues you may have.
+            </div>
+          </div>
         </div>
+
       </div>
-     
-     </div>
       <div className="text-slate-600 font-bold text-3xl lg:text-6xl mx-auto my-7">
         Our Founders ...
       </div>
@@ -87,7 +87,7 @@ export default function About() {
           </div>
         </div>
         <div className="hero-right">
-         
+
         </div>
       </div>
 
@@ -104,7 +104,7 @@ export default function About() {
           </div>
         </div>
         <div className="hero-right">
-          
+
         </div>
       </div>
 
@@ -121,7 +121,7 @@ export default function About() {
           </div>
         </div>
         <div className="hero-right">
-         
+
         </div>
       </div>
 
