@@ -23,6 +23,7 @@ mongoose.connect(process.env.MONGO)
 
 const app = express();
 const allowedOrigins = [
+    'https://pseudo-ownerr.vercel.app',
     'https://pseudo-owner.vercel.app',
     'https://pseudo-owner.onrender.com',
     'http://localhost:5173',
