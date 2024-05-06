@@ -45,9 +45,7 @@ export const confirmPayment = async (req, res, next) => {
             booking.paymentStatus = 'paid';
             booking.save();
 
-            return res.status(201).json({
-                message: "Payment done! Your car is booked"
-            });
+           return res.redirect('https://pseudo-owner.vercel.app/');
         }
 
     } catch (error) {
