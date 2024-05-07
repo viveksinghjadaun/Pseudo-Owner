@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ListingItem from '../components/ListingItem';
 import lottie from 'lottie-web';
 import animationData from '../assets/a1.json';
-import ListingItem from '../components/ListingItem';
 
 export default function Home() {
   const [offerListings, setOfferListings] = useState([]);
@@ -10,14 +10,7 @@ export default function Home() {
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/listing/get?offer=true&limit=4`, {
-          method: 'GET',
-          mode: 'cors',
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
-          }
-        });
+        const res = await fetch('/api/listing/get?offer=true&limit=4');
         const data = await res.json();
         setOfferListings(data);
       } catch (error) {
@@ -26,11 +19,13 @@ export default function Home() {
     };
 
     fetchOfferListings();
+  }, []);
 
+  useEffect(() => {
     const container = document.getElementById('your-animation-container');
     lottie.loadAnimation({
       container: container,
-      renderer: 'svg',
+      renderer: 'svg', 
       loop: true,
       autoplay: true,
       animationData: animationData,
@@ -38,38 +33,48 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="container mx-auto py-10 flex flex-wrap">
-      {/* Introduction Section */}
-      <section className="w-full md:w-2/3 px-4 mb-16">
-        <div className="text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-800 leading-tight">
-            Find your next <span className="text-blue-500">perfect</span> Drive In Minutes...
-          </h1>
-          <p className="text-gray-600 mt-4 text-lg md:text-xl">Pseudo Owner is the best place to find your next perfect car to drive. We have a wide range of cars for you to choose from.</p>
-          <Link to="/search" className="mt-6 inline-block bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-300">
-            Let's get started...
-          </Link>
+    <div className="bg-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          {/* Left Section - Animation */}
+          <div className="md:order-2">
+            <div id="your-animation-container"></div>
+          </div>
+          
+          {/* Right Section - Content */}
+          <div className="md:order-1">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+              Find your next <span className="text-blue-600">perfect</span> drive in minutes...
+            </h1>
+            <p className="text-lg text-gray-600 mb-8">
+              Pseudo Owner is the best place to find your next perfect car to drive.
+              We have a wide range of cars for you to choose from.
+            </p>
+            <Link
+              to="/search"
+              className="inline-block px-8 py-3 bg-blue-600 text-white font-bold text-base rounded-full hover:bg-blue-700 transition duration-300"
+            >
+              Book Now
+            </Link>
+          </div>
         </div>
+      </div>
 
-        {/* Recent Offers Section */}
-        <section className="mt-16">
-          {offerListings.length > 0 && (
-            <div className="mb-12">
-              <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 mb-4">Recent Offers</h2>
-              <Link to="/search?offer=true" className="text-blue-500 text-lg mb-6 inline-block hover:underline">Show more offers</Link>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {offerListings.map(listing => (
-                  <ListingItem listing={listing} key={listing._id} />
-                ))}
-              </div>
+      {/* Listing results for offer */}
+      <div className='max-w-7xl mx-auto p-4 md:p-8'>
+        {offerListings.length > 0 && (
+          <div className=''>
+            <div className='my-6'>
+              <h2 className='text-3xl font-semibold text-gray-800 mb-4'>Recent offers</h2>
+              <Link className='text-base text-blue-800 hover:underline' to='/search?offer=true'>Show more offers</Link>
             </div>
-          )}
-        </section>
-      </section>
-
-      {/* Animation */}
-      <div className="w-full md:w-1/3 px-4">
-        <div id="your-animation-container" className="mx-auto max-w-lg"></div>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
+              {offerListings.map((listing) => (
+                <ListingItem listing={listing} key={listing._id} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
