@@ -76,7 +76,7 @@ export default function Home() {
           <div className=''>
             <div className='my-3'>
               <h2 className='text-2xl font-semibold text-slate-600'>Recent offers</h2>
-              <Link className='inline-block mt-6 px-6 py-3 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600'}>Show more offers</Link>
+              <Link className='inline-block mt-6 px-6 py-3 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600'>Show more offers</Link>
             </div>
             <div className='flex flex-wrap gap-4'>
               {offerListings.map((listing) => (
