@@ -60,9 +60,9 @@ export default function Home() {
         </div>
         <Link
           to={'/search'}
-          className='inline-block mt-6 px-6 py-3 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600'
+          className='text-xs sm:text-sm text-blue-800 font-bold hover:underline'
         >
-          Book Now
+          Let's get started...
         </Link>
 
       </div>
