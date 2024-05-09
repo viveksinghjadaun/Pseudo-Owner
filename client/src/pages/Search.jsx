@@ -156,7 +156,6 @@ export default function Search() {
               <option></option>
               <option>Jaipur</option>
               <option>Delhi</option>
-              <option>Noida</option>
               <option>Mumbai</option>
                <option>Chandigarh</option>
                <option>Agra</option>
